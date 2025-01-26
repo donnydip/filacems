@@ -20,6 +20,7 @@ Homestead.yaml
 /.phpunit.result.cache
 /.phpunit.cache
 .composer/cache
+.npm/
 
 # IDE specific
 /.idea

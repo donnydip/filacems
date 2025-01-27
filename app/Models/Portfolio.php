@@ -13,5 +13,6 @@ class Portfolio extends Model
         'motto',
         'aboutHeader',
         'aboutContent',
+        'picture',
     ];
 }

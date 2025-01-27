@@ -13,6 +13,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -46,7 +48,14 @@ class PortfolioResource extends Resource
                     ->rows(5)
                     ->columnSpanFull(),
                 FileUpload::make('picture')
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])
                     ->uploadingMessage('Uploading picture...')
+                    ->directory('img')
                     ->columnSpanFull()
                     ->image(),
             ]);
@@ -56,17 +65,17 @@ class PortfolioResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('greetings')
+                TextColumn::make('greetings')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('jobTitle')
+                TextColumn::make('jobTitle')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('motto')
+                TextColumn::make('motto')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('aboutHeader')
+                TextColumn::make('aboutHeader')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('picture')
+                ImageColumn::make('picture')
                     ->searchable(),
             ])
             ->filters([

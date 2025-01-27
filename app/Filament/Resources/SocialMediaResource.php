@@ -6,9 +6,11 @@ use App\Filament\Resources\SocialMediaResource\Pages;
 use App\Filament\Resources\SocialMediaResource\RelationManagers;
 use App\Models\SocialMedia;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -25,7 +27,12 @@ class SocialMediaResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                    ->maxLength(50),
+                TextInput::make('icon')
+                    ->maxLength(50),
+                TextInput::make('url')
+                    ->maxLength(255),
             ]);
     }
 
@@ -33,7 +40,9 @@ class SocialMediaResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name'),
+                TextColumn::make('icon'),
+                TextColumn::make('url'),
             ])
             ->filters([
                 //
@@ -43,9 +52,6 @@ class SocialMediaResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 

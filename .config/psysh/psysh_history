@@ -1,0 +1,5 @@
+db:connection()->getPDO();
+db::connection()->getPDO();
+config('database')
+config('database')
+DB::connection()->getPdo();

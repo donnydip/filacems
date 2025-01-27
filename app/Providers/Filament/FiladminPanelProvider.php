@@ -61,6 +61,8 @@ class FiladminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])->plugins([
+                \FilipFonal\FilamentLogManager\FilamentLogManager::make(),
             ]);
     }
 }
